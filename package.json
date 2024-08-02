@@ -1,0 +1,31 @@
+{
+  "name": "API-Restful-Node.js-ExpressJS-Typescript-TypeORM-Postgres-Redis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts",
+    "lint": "eslint . --ext .ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mariano-SI/API-Restful-Node.js-ExpressJS-Typescript-TypeORM-Postgres-Redis.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mariano-SI/API-Restful-Node.js-ExpressJS-Typescript-TypeORM-Postgres-Redis/issues"
+  },
+  "homepage": "https://github.com/Mariano-SI/API-Restful-Node.js-ExpressJS-Typescript-TypeORM-Postgres-Redis#readme",
+  "devDependencies": {
+    "@types/node": "^22.0.2",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.8.0",
+    "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.5.4"
+  }
+}

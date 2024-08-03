@@ -8,7 +8,8 @@ temp/
 coverage
 ormconfig.json
 dist
-anotacoes.txt
+01-anotacoes.txt
+02-comandosUteis.txt
 
 uploads/*
 !uploads/.gitkeep

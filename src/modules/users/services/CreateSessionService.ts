@@ -1,5 +1,6 @@
 import { getCustomRepository } from "typeorm";
 import { compare } from "bcryptjs";
+import { sign } from "jsonwebtoken"
 import User from "../typeorm/entities/User";
 import UsersRepository from "../typeorm/repositories/UsersRepository";
 import AppError from "../../../shared/errors/AppError";
@@ -11,7 +12,7 @@ interface IRequest{
 
 interface IResponse{
     user: User;
-    token?: string;
+    token: string;
 } 
 class CreateSessionService{
     public async execute({email, password}: IRequest): Promise<IResponse>{
@@ -23,13 +24,18 @@ class CreateSessionService{
             throw new AppError('Invalid login credentials.', 401);
         }
 
-        const passowrdMatch = await compare(password, user.password);
+        const passwordMatch = await compare(password, user.password);
 
-        if(!passowrdMatch){
+        if(!passwordMatch){
             throw new AppError('Invalid login credentials.', 401);
         }
-        
-        return {user};
+  
+        const token = sign({id:user.id}, process.env.JWT_SECRET, {
+            subject: user.id,
+            expiresIn: '1d'
+        })
+        console.log("token", token);
+        return {user, token};
     }
 }
 

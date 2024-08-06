@@ -15,12 +15,6 @@ class CreateUserService{
     public async execute({name, email, password, confirmPassword}: IRequest): Promise<User>{
         const usersRepository = getCustomRepository(UsersRepository);
 
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&+=-])[A-Za-z\d@$!%*?&]{8,}$/;
-
-        if (!passwordRegex.test(password)) {
-            throw new AppError('Password does not meet the requirements.', 400);
-        }
-
         if(password !== confirmPassword){
             throw new AppError('Password and confirm password does not match.', 400);
         }

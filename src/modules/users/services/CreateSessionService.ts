@@ -30,11 +30,11 @@ class CreateSessionService{
             throw new AppError('Invalid login credentials.', 401);
         }
   
-        const token = sign({id:user.id}, process.env.JWT_SECRET, {
+        const token = sign({}, process.env.JWT_SECRET, {
             subject: user.id,
-            expiresIn: '1d'
+            expiresIn: process.env.JWT_EXPIRES_IN
         })
-        console.log("token", token);
+ 
         return {user, token};
     }
 }

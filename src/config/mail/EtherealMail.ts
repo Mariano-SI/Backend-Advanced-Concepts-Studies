@@ -1,13 +1,34 @@
 import nodemailer from 'nodemailer';
+import HandleBarsMailTemplate from './HandleBarsMailTemplate';
 
-interface ISendEmail {
-    to: string;
-    body: string;
+interface ITemplateVariable{
+    [key: string]: string | number;
+}
+interface IParserMailTemplate{
+    file: string;
+    variables: ITemplateVariable 
 }
 
+interface IMailContact {
+    name: string;
+    email: string;
+}
+interface ISendEmail {
+    to: IMailContact;
+    from?: IMailContact;
+    subject: string;
+    templateData: IParserMailTemplate;
+}
+
+
+
+
 export default class EtherealMail {
-    public static async sendMail({to, body}: ISendEmail): Promise<void>{
+    public static async sendMail({to, from, subject, templateData}: ISendEmail): Promise<void>{
         const account = await nodemailer.createTestAccount();
+
+        const mailTemplate = new HandleBarsMailTemplate();
+
         const transporter = nodemailer.createTransport({
             host: account.smtp.host,
             port: account.smtp.port,
@@ -19,10 +40,16 @@ export default class EtherealMail {
         });
 
         const message = await transporter.sendMail({
-            from: 'equipe@apivendas.com.br',
-            to,
-            subject: 'Recuperação de senha',
-            text: body,
+            from:{
+                name: from?.name || 'Equipe API Vendas',
+                address: from?.email || 'equipe@apivendas.com.br'
+            },
+            to:{
+                 name: to.name,
+                 address: to.email 
+            },
+            subject,
+            html: await mailTemplate.parse(templateData),
         })
 
         console.log('Message sent: %s', message.messageId);

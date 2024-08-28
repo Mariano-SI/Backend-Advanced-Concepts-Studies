@@ -49,7 +49,7 @@ export default class CreateOrderService{
         }
 
         const formattedProducts = products.map((product) => ({
-            productId: product.id,
+            product_id: product.id,
             quantity: product.quantity,
             price: existsProducts.filter(p => p.id === product.id)[0].price
         }))
@@ -61,9 +61,11 @@ export default class CreateOrderService{
 
         const {order_products} = order;
 
-        const updatedProductQuantity = order_products.map((product) => ({
+        const updatedProductQuantity = order_products.map(product => ({
             id: product.product_id,
-            quantity: existsProducts.filter(p => p.id === product.id)[0].quantity - product.quantity
+            quantity:
+              existsProducts.filter(p => p.id === product.product_id)[0].quantity -
+              product.quantity,
         }));
 
         await productsRepository.save(updatedProductQuantity);

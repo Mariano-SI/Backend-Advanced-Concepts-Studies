@@ -16,10 +16,10 @@ export class OrderProduct {
     @JoinColumn({ name: 'product_id' })
     product: Product;
 
-    @Column('decimal')
+    @Column()
     order_id: string;
 
-    @Column('int')
+    @Column()
     product_id: string;
 
     @Column('decimal')

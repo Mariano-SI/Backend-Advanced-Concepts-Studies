@@ -13,3 +13,5 @@ dist
 
 uploads/*
 !uploads/.gitkeep
+postgres-data/*
+redis-data/*

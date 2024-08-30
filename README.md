@@ -1,4 +1,4 @@
-# API de Vendas
+# API para estudo de conceitos backend
 
 Este projeto é uma API RESTful de vendas desenvolvida com o propósito principal de servir como uma plataforma de estudo para conceitos avançados de desenvolvimento backend. O foco está em explorar e implementar várias tecnologias e práticas essenciais para a construção de sistemas robustos e escaláveis.
 
@@ -44,7 +44,7 @@ Através da implementação destes conceitos, o projeto visa proporcionar uma ex
 ## Configuração e Execução
 
 1. Clone o repositório:
-git clone https://github.com/Mariano-SI/API-Restful-Node.js-ExpressJS-Typescript-TypeORM-Postgres-Redis.git cd API-Restful-Node.js-ExpressJS-Typescript-TypeORM-Postgres-Redis
+git clone https://github.com/Mariano-SI/Backend-Advanced-Concepts-Studies.git cd Backend-Advanced-Concepts-Studies
 
 
 2. Instale as dependências:

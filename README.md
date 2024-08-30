@@ -48,15 +48,15 @@ git clone https://github.com/Mariano-SI/Backend-Advanced-Concepts-Studies.git cd
 
 
 2. Instale as dependências:
-npm install
+`npm install`
 
 
 3. Inicie os serviços do Docker (PostgreSQL e Redis):
-docker compose up -d
+`docker compose up -d`
 
 
 4. Execute as migrações do banco de dados:
-npm run typeorm migration:run
+`npm run typeorm migration:run`
 
 
 5. Inicie o servidor de desenvolvimento:

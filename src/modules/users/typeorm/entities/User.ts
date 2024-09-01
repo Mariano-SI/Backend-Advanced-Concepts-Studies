@@ -1,5 +1,6 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Exclude, Expose } from "class-transformer";
+import upload from "../../../../config/upload";
 
 @Entity("users")
 export class User {
@@ -32,6 +33,17 @@ export class User {
         }
 
         return `${process.env.APP_API_URL}/files/${this.avatar}`
+    }
+    @Expose({name: 'avatar_url'})
+    getAvatarUrl(): string | null { 
+        if(!this.avatar){ 
+            return null         
+        }         
+        if(process.env.STORAGE_DRIVER === 'disk'){             
+            return `${process.env.APP_API_URL}/files/${this.avatar}`
+        }else{ 
+            return `https://${upload.config.aws.bucket}.s3.${process.env.AWS_REGION}.amazonaws.com/${this.avatar}`         
+        }    
     }
 }
 

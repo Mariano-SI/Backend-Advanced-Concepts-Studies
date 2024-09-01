@@ -30,7 +30,7 @@ app.use((error: Error, request: Request, response: Response, next: NextFunction 
             message: error.message
         })
     }
-    console.info(error.message);
+    console.info(error);
     
     return response.status(500).json({
         status: 'error',

@@ -11,7 +11,7 @@ class CustomersRepository implements ICustomersRepository{
     }
 
     public async create({name, email}: ICreateCustomer): Promise<Customer>{
-        const customer = await this.ormRepository.create({
+        const customer = this.ormRepository.create({
             name, 
             email
         });

@@ -1,15 +1,16 @@
+import { inject, injectable } from "tsyringe";
 import AppError from "../../../shared/errors/AppError";
 import { ICreateCustomer } from "../domain/models/ICreateCustomer";
 import { ICustomer } from "../domain/models/ICustomer";
 import { ICustomersRepository } from "../domain/repositories/ICustomersRepository";
 
+@injectable()
 export default class CreateCustomerService{
 
-    private customersRepository: ICustomersRepository;
-
-    constructor(customersRepository: ICustomersRepository){
-        this.customersRepository = customersRepository;
-    }
+    constructor(
+        @inject("CustomersRepository")
+        private customersRepository: ICustomersRepository
+    ){}
 
     public async execute({name, email}: ICreateCustomer): Promise<ICustomer>{
         
@@ -23,7 +24,7 @@ export default class CreateCustomerService{
             name, 
             email
         });
-        
+
         return customer;
     }
 }

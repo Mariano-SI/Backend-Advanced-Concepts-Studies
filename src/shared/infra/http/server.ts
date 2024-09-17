@@ -8,6 +8,7 @@ import cors from 'cors';
 import routes from './routes';
 import AppError from '../../errors/AppError';
 import '../typeorm';
+import '../../container';
 import uploadConfig from "../../../config/upload"
 import rateLimiter from '../http/middlewares/rateLimiter';
 

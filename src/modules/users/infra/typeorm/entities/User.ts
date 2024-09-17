@@ -1,9 +1,10 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Exclude, Expose } from "class-transformer";
 import upload from "../../../../../config/upload";
+import { IUser } from "../../../domain/models/IUser";
 
 @Entity("users")
-export class User {
+export class User implements IUser {
     @PrimaryGeneratedColumn('uuid')
     id: string
 

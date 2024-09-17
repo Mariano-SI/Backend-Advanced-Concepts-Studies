@@ -1,7 +1,8 @@
 import { Column, CreateDateColumn, Entity, Generated, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { IUserToken } from "../../../domain/models/IUserToken";
 
 @Entity("user_tokens")
-export class UserToken {
+export class UserToken implements IUserToken {
     @PrimaryGeneratedColumn('uuid')
     id: string
 

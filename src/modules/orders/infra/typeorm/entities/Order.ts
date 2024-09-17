@@ -1,9 +1,10 @@
 import { CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import Customer from "../../../../customers/infra/typeorm/entities/Customer";
 import OrderProduct from "./OrderProduct";
+import { IOrder } from "../../../domain/models/IOrder";
 
 @Entity("orders")
-export class Order {
+export class Order implements IOrder {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
